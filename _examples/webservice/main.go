@@ -3,40 +3,40 @@ package main
 import (
 	"log"
 
-	"github.com/mmierzwa/go-diagrams-v2/diagram"
-	"github.com/mmierzwa/go-diagrams-v2/nodes/apps"
+	diagram2 "github.com/mmierzwa/go-diagrams-v2/pkg/diagram"
+	apps2 "github.com/mmierzwa/go-diagrams-v2/pkg/nodes/apps"
 )
 
 func main() {
-	d, err := diagram.New(diagram.Label("Web Service"), diagram.Direction("LR"))
+	d, err := diagram2.New(diagram2.WithLabel("Web Service"), diagram2.WithDirection("LR"))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	inet := apps.Network.Internet().Label("Internet")
-	proxy := apps.Network.Caddy().Label("Caddy")
+	inet := apps2.Network.Internet().Label("Internet")
+	proxy := apps2.Network.Caddy().Label("Caddy")
 
 	d.Connect(inet, proxy)
 
-	ss := apps.Inmemory.Redis().Label("session")
-	rs := apps.Inmemory.Redis().Label("replica")
+	ss := apps2.Inmemory.Redis().Label("session")
+	rs := apps2.Inmemory.Redis().Label("replica")
 
-	cache := diagram.NewGroup("cache").Label("Sessions").
-		Connect(ss, rs, diagram.Bidirectional())
+	cache := diagram2.NewGroup("cache").Label("Sessions").
+		Connect(ss, rs, diagram2.Bidirectional())
 
-	dbmain := apps.Database.Postgresql().Label("Master DB")
-	repls := []*diagram.Node{
-		apps.Database.Postgresql().Label("DB Replica 1"),
-		apps.Database.Postgresql().Label("DB Replica 2"),
+	dbmain := apps2.Database.Postgresql().Label("Master DB")
+	repls := []*diagram2.Node{
+		apps2.Database.Postgresql().Label("DB Replica 1"),
+		apps2.Database.Postgresql().Label("DB Replica 2"),
 	}
 
-	db := diagram.NewGroup("database").Label("Database").
+	db := diagram2.NewGroup("database").Label("Database").
 		Add(dbmain).Add(repls...)
 
-	svcs := diagram.NewGroup("services").Label("Services").
+	svcs := diagram2.NewGroup("services").Label("Services").
 		Add(
-			apps.Container.Docker().Label("Replica 1"),
-			apps.Container.Docker().Label("Replica 2"),
+			apps2.Container.Docker().Label("Replica 1"),
+			apps2.Container.Docker().Label("Replica 2"),
 		).
 		ConnectAllFrom(proxy.ID()).
 		ConnectAllTo(dbmain.ID()).

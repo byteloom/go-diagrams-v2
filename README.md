@@ -26,15 +26,16 @@ Improving the documentation is on the todo list :sweat_smile:
 * [x] Dev automation (shell scripts & GH Actions)
     * [x] Build
     * [x] Basic tests
-    * [ ] Setup Dependabot
+    * [x] Setup Dependabot
 
 ### v1.x
 
-* [ ] Project structure enhancements
+* [x] Project structure enhancements
 * [ ] Refactor base structures for better modularity.
 * [ ] CLI tool
 * [ ] Usage documentation
 * [ ] Dev automation continued (shell scripts & GH Actions)
+  * [ ] Linters
   * [ ] Documentation generation with examples
   * [ ] end-2-end tests (if feasible)
 * [ ] Contributors documentation
