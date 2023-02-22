@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/mmierzwa/go-diagrams-v2?style=plastic) [![Go](https://github.com/mmierzwa/go-diagrams-v2/actions/workflows/go.yml/badge.svg)](https://github.com/mmierzwa/go-diagrams-v2/actions/workflows/go.yml)
+
 # go-diagrams-v2
 
 Helps in creating elegant diagrams in Go.
@@ -20,10 +22,11 @@ Improving the documentation is on the todo list :sweat_smile:
 ### v0.x
 
 * [x] Go upgrade to 1.19
-* [ ] Adding releases
-* [ ] Dev automation (shell scripts & GH Actions)
-    * [ ] Build
-    * [ ] Basic tests
+* [x] Adding releases
+* [x] Dev automation (shell scripts & GH Actions)
+    * [x] Build
+    * [x] Basic tests
+    * [ ] Setup Dependabot
 
 ### v1.x
 
