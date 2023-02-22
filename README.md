@@ -35,7 +35,7 @@ Improving the documentation is on the todo list :sweat_smile:
 * [ ] CLI tool
 * [ ] Usage documentation
 * [ ] Dev automation continued (shell scripts & GH Actions)
-  * [ ] Linters
+  * [x] Linters
   * [ ] Documentation generation with examples
   * [ ] end-2-end tests (if feasible)
 * [ ] Contributors documentation
