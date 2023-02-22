@@ -7,7 +7,7 @@ import (
 
 const charset = "abcdefghijlkmnopqrstuvwxyz"
 
-var seed = rand.New(rand.NewSource(time.Now().UnixNano()))
+var seed = rand.New(rand.NewSource(time.Now().UnixNano())) //nolint:gosec
 
 func String(length int) string {
 	return StringWithCharset(length, charset)

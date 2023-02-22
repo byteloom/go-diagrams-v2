@@ -4,37 +4,37 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/mmierzwa/go-diagrams-v2/diagram"
-	"github.com/mmierzwa/go-diagrams-v2/nodes/gcp"
+	diagram2 "github.com/mmierzwa/go-diagrams-v2/pkg/diagram"
+	gcp2 "github.com/mmierzwa/go-diagrams-v2/pkg/nodes/gcp"
 )
 
 func main() {
 	workerCount := 5
 
-	d, err := diagram.New(
-		diagram.Label("Workers"),
-		diagram.Filename("workers"),
-		diagram.Direction("TB"),
+	d, err := diagram2.New(
+		diagram2.WithLabel("Workers"),
+		diagram2.WithFilename("workers"),
+		diagram2.WithDirection("TB"),
 	)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	lb := gcp.Network.LoadBalancing(diagram.NodeLabel("nlb"))
+	lb := gcp2.Network.LoadBalancing(diagram2.NodeLabel("nlb"))
 	d.Add(lb)
 
-	db := gcp.Database.Sql(diagram.NodeLabel("db"))
+	db := gcp2.Database.Sql(diagram2.NodeLabel("db"))
 	d.Add(db)
 
-	workers := make([]*diagram.Node, workerCount)
+	workers := make([]*diagram2.Node, workerCount)
 
 	for i := 0; i < workerCount; i++ {
 		label := fmt.Sprintf("worker %d", i+1)
-		workers[i] = gcp.Compute.ComputeEngine(diagram.NodeLabel(label))
+		workers[i] = gcp2.Compute.ComputeEngine(diagram2.NodeLabel(label))
 	}
 
-	d.Group(diagram.NewGroup("workers").
+	d.Group(diagram2.NewGroup("workers").
 		Add(workers...).
 		ConnectAllTo(db.ID()).
 		ConnectAllFrom(lb.ID()),

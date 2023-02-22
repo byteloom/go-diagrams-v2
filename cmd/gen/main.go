@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	diaPkg = "github.com/mmierzwa/go-diagrams-v2/diagram"
+	diaPkg = "github.com/mmierzwa/go-diagrams-v2/pkg/diagram"
 )
 
 type provider struct {
@@ -99,7 +99,7 @@ func main() {
 	}
 
 	for _, p := range providers {
-		if err := genProvider("nodes", p); err != nil {
+		if err := genProvider("pkg/nodes", p); err != nil {
 			log.Fatalf("generate %s: %v", p.name, err)
 		}
 	}
