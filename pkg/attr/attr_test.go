@@ -3,22 +3,14 @@ package attr
 import (
 	"testing"
 
-	"github.com/stretchr/testify/suite"
+	"github.com/stretchr/testify/assert"
 )
 
-type AttrSuite struct {
-	suite.Suite
-}
-
-func TestRunAttrSuite(t *testing.T) {
-	suite.Run(t, new(AttrSuite))
-}
-
-func (s *AttrSuite) TestNewAttributes() {
+func TestNewAttributes(t *testing.T) {
 	attrs := New()
 
 	attrs.Set(Label("test"), Shape("box"))
 
-	s.Equal("test", attrs["label"])
-	s.Equal("box", attrs["shape"])
+	assert.Equal(t, "test", attrs["label"])
+	assert.Equal(t, "box", attrs["shape"])
 }
