@@ -3,7 +3,7 @@ module github.com/mmierzwa/go-diagrams-v2
 go 1.19
 
 require (
-	github.com/awalterschulze/gographviz v0.0.0-20200901124122-0eecad45bd71
+	github.com/awalterschulze/gographviz v2.0.3+incompatible
 	github.com/dave/jennifer v1.6.0
 	github.com/google/uuid v1.3.0
 	github.com/iancoleman/strcase v0.2.0
